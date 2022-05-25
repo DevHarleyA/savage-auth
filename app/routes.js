@@ -1,5 +1,5 @@
 module.exports = function(app, passport, db) {
-
+// db is the connection where we can find everything
 // normal routes ===============================================================
 
     // show the home page (will also have our login links)
@@ -13,6 +13,7 @@ module.exports = function(app, passport, db) {
           if (err) return console.log(err)
           res.render('profile.ejs', {
             user : req.user,
+            // now whenever someone makes a req, you also get info about logged in user
             messages: result
           })
         })
@@ -49,6 +50,21 @@ module.exports = function(app, passport, db) {
       })
     })
 
+    app.put('/messagesDown', (req, res) => {
+      db.collection('messages')
+      .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
+        $set: {
+          thumbUp:req.body.thumbUp - 1
+        }
+      }, {
+        sort: {_id: -1},
+        upsert: true
+      }, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
+      })
+    })
+
     app.delete('/messages', (req, res) => {
       db.collection('messages').findOneAndDelete({name: req.body.name, msg: req.body.msg}, (err, result) => {
         if (err) return res.send(500, err)
@@ -57,7 +73,7 @@ module.exports = function(app, passport, db) {
     })
 
 // =============================================================================
-// AUTHENTICATE (FIRST LOGIN) ==================================================
+// AUTHENTICATE (FIRST LOGIN) => dont touch, it works==================================================
 // =============================================================================
 
     // locally --------------------------------
