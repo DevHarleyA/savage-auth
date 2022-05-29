@@ -1,0 +1,56 @@
+body{
+  padding-top:80px;
+  word-wrap:break-word;
+  background: url('../img/lake2.jpg');
+}
+
+img{
+  height: 200px;
+}
+
+.title {
+  font-family: 'M PLUS Rounded 1c', Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  letter-spacing: .6rem;
+}
+
+.jumbotron {
+  background: rgba(21,110,172,255);
+  color: rgba(246,87,94,255); 
+  /* orange color */
+}
+
+.jumbotron>p {
+  font-size: 2.5rem;
+  letter-spacing: .4rem;
+  color: rgba(255,255,255,255)
+  /* white color */
+}
+
+.btn-default {
+  background-color: rgba(255,255,255,255);
+}
+
+.cust {
+  background: rgba(21,110,172,255);
+  /* blue color */
+  color: rgba(255,255,255,255);
+}
+
+a {
+  color: rgba(246,87,94,255);
+}
+
+.custTwo {
+  background-color: rgba(255,255,255,255)
+}
+
+.message {
+  font-size: 1.75rem;
+  margin: 1%;
+  list-style: circle;
+}
+
+.custForm {
+  margin: 2%;
+}

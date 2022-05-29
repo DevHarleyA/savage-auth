@@ -34,7 +34,7 @@ mongoose.connect(configDB.url, (err, database) => {
   db = database
   // our connection to our db is stored in db
   require('./app/routes.js')(app, passport, db);
-  // this is a function that we call.
+  // this is a function that we call to have access to routes.js
 }); // connect to our database
 
 require('./config/passport')(passport); // pass passport for configuration
@@ -47,9 +47,7 @@ app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public')) // dont need to route indiv. files
 
-
 app.set('view engine', 'ejs'); // set up ejs for templating
-
 // required for passport
 app.use(session({
     secret: 'rcbootcamp2022a', // session secret
@@ -61,7 +59,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
-
 
 // launch ======================================================================
 app.listen(port);

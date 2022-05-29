@@ -1,6 +1,6 @@
-var thumbUp = document.getElementsByClassName("fa-thumbs-up");
-var thumbDown = document.getElementsByClassName("fa-thumbs-down")
-var trash = document.getElementsByClassName("fa-ban");
+const thumbUp = document.getElementsByClassName("fa-angles-up");
+const thumbDown = document.getElementsByClassName("fa-angles-down")
+const trash = document.getElementsByClassName("fa-ban");
 
 Array.from(thumbUp).forEach(function(element) {
       element.addEventListener('click', function(){

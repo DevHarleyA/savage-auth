@@ -1,16 +1,22 @@
 <!doctype html>
 <html>
 <head>
-    <title>21 Savage Fan Site</title>
+  <!-- Main Profile Page -->
+    <title>Oasis</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="shortcut icon" href="favicon.ico">
+    <script src="https://kit.fontawesome.com/265ed8ed5a.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="container">
+<div class="container custTwo">
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+        <h1 class="title"><i class="fa-solid fa-dove"></i>Profile</h1>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
 
@@ -23,12 +29,12 @@
 
                 <% if (user.local.email) { %>
                     <p>
-                        <strong>id</strong>: <%= user._id %><br>
+                        <!-- <strong>id</strong>: <%= user._id %><br> -->
                         <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>password</strong>: <%= user.local.password %>
+                        <!-- <strong>password</strong>: <%= user.local.password %> -->
                     </p>
 
-                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
+                    <a href="/unlink/local" class="btn btn-default">Delete Account</a>
                 <% } else { %>
                     <a href="/connect/local" class="btn btn-default">Connect Local</a>
                 <% } %>
@@ -36,25 +42,26 @@
             </div>
         </div>
         <div class="col-sm-6">
-          <h3>Messages</h3>
+          <h2 class="title">Gratitudes</h2>
           <ul class="messages">
-          <% for(var i=0; i<messages.length; i++) {%>
+          <% for(let i=0; i<messages.length; i++) {%>
             <li class="message">
-              <span><%= messages[i].name %></span>
+              <span><%= messages[i].name %></span>:
               <span><%= messages[i].msg %></span>
               <span><%= messages[i].thumbUp %></span>
-              <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
-              <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+              <span><i class="fa fa-angles-up" aria-hidden="true"></i></span>
+              <span><i class="fa-solid fa-angles-down" aria-hidden="true"></i></span>
               <span><i class="fa fa-ban" aria-hidden="true"></i></span>
             </li>
           <% } %>
           </ul>
 
-          <h2>Add a message</h2>
+          <h4 class="title">What are you grateful for?</h4>
         <% if (user.local.email) { %>
-          <form action="/messages" method="POST">
-            <input type="text" value="<%= user.local.email %>" name="name">
-            <input type="text" placeholder="message" name="msg">
+          <form action="/messages" method="POST" class="custForm">
+            <!-- action = endpoint (/messages) -->
+            <input type="text" placeholder="your alias or name" name="name">
+            <input type="text" placeholder="your gratitude" name="msg">
             <button type="submit">Submit</button>
           </form>
         </div>
